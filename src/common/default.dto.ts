@@ -35,38 +35,8 @@ export class ListQueryDTO {
   needTotalCount?: string;
 }
 
-export class CheckEmailDTO {
-  @ApiProperty({ description: '중복확인할 이메일' })
-  @IsString()
-  email: string;
-}
-
 export class OnlyIdDTO {
   @ApiProperty({ description: 'PK' })
   @IsString()
   id: string;
-}
-
-class ErrorResponseDTO {
-  @ApiProperty({ description: '에러 메시지' })
-  @IsString()
-  errorMessage: string;
-
-  @ApiPropertyOptional({ description: '에러코드' })
-  @IsOptional()
-  @IsString()
-  errorCode?: string;
-}
-
-export class DefaultResponseDTO<T = any> {
-  @ApiProperty({ description: 'API 처리 성공여부 (success/fail)' })
-  result: 'success' | 'fail';
-
-  @ApiPropertyOptional({ description: '응답 데이터' })
-  @IsOptional()
-  data?: T;
-
-  @ApiPropertyOptional({ description: '에러 발생시 에러 메시지 데이터' })
-  @IsOptional()
-  error?: ErrorResponseDTO;
 }

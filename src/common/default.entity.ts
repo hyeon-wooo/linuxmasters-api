@@ -1,4 +1,5 @@
 import {
+  Column,
   CreateDateColumn,
   DeleteDateColumn,
   PrimaryGeneratedColumn,
@@ -19,4 +20,7 @@ export abstract class DefaultEntity {
 
   @DeleteDateColumn({ comment: 'row 삭제일시' })
   deletedAt?: Date;
+
+  @Column('varchar', { nullable: true, comment: '관리자 참고용 메모' })
+  memo: string | null;
 }
