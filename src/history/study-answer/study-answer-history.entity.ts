@@ -24,4 +24,7 @@ export class StudyAnswerHistoryEntity extends DefaultEntity {
 
   @Column('boolean', { comment: '채점 시 정답여부', nullable: true })
   correct: boolean | null;
+
+  @Column({ comment: '앱실행내역ID (launch.id)' })
+  launchId: string;
 }

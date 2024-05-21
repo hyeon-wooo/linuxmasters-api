@@ -30,6 +30,7 @@ import { HistoryService } from 'src/history/history.service';
 import { RolesGuard } from 'src/auth/role/role.guard';
 import { Roles } from 'src/auth/role/role.decorator';
 import { ERole } from 'src/auth/role/role.enum';
+import { LaunchID, TLaunchInfo } from 'src/common/launch.decorator';
 
 @Controller('command')
 export class CommandController {
@@ -94,9 +95,17 @@ export class CommandController {
   // 상세 조회
   @Get('/:id')
   @UseGuards(JwtAuthGuard)
-  async getDetail(@Param('id') commandId: string, @Req() { user }: Request) {
+  async getDetail(
+    @Param('id') commandId: string,
+    @Req() { user }: Request,
+    @LaunchID() launch: TLaunchInfo,
+  ) {
     // 히스토리 저장
-    this.historyService.saveCommandRead({ commandId, userId: user.id });
+    this.historyService.saveCommandRead({
+      commandId,
+      userId: user.id,
+      launchId: launch.launchId,
+    });
 
     const found = await this.service.findOne({ id: commandId }, [
       'args',

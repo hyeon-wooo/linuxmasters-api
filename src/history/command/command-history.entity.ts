@@ -7,4 +7,7 @@ export class CommandHistoryEntity extends DefaultEntity {
   commandId: string;
   @Column({ comment: '사용자ID (user.id)' })
   userId: string;
+
+  @Column({ comment: '앱실행내역ID (launch.id)' })
+  launchId: string;
 }

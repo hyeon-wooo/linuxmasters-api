@@ -26,6 +26,7 @@ import { QuestionEntity } from './question.entity';
 import { EStudyAnswerSelection } from 'src/history/study-answer/study-answer-history.enum';
 import { JwtAuthGuard } from 'src/auth/jwt.guard';
 import { Request } from 'express';
+import { LaunchID, TLaunchInfo } from 'src/common/launch.decorator';
 
 @Controller('question')
 export class QuestionController {
@@ -49,7 +50,10 @@ export class QuestionController {
 
   // 기출문제 공부 시작 (문제배열 및 selectHistoryId 응답)
   @Post('/select')
-  async selectQuestion(@Body() body: SelectQuestionBodyDTO) {
+  async selectQuestion(
+    @Body() body: SelectQuestionBodyDTO,
+    @LaunchID() launch: TLaunchInfo,
+  ) {
     const { className, roundName, topics } = body;
 
     // 히스토리 저장
@@ -57,6 +61,7 @@ export class QuestionController {
       className,
       roundName,
       topics: topics?.map((t) => '#' + t).join('') ?? null,
+      launchId: launch.launchId,
     });
     const selectHistoryId = selectHistory[0].id;
 
@@ -92,6 +97,7 @@ export class QuestionController {
     @Body() body: QuestionCompleteBodyDTO,
     @Param('id') questionId: string,
     @Req() { user }: Request,
+    @LaunchID() launch: TLaunchInfo,
   ) {
     // 히스토리 저장
     const { selectId, selectedAnswerNumber } = body;
@@ -106,6 +112,7 @@ export class QuestionController {
       selectedAnswerNumber,
       selection: EStudyAnswerSelection.CHECK_ANSWER,
       correct,
+      launchId: launch.launchId,
     });
 
     return sendSuccessRes(null);
@@ -125,6 +132,7 @@ export class QuestionController {
     @Query() query: QuestionCommentQueryDTO,
     @Param('id') questionId: string,
     @Req() { user }: Request,
+    @LaunchID() launch: TLaunchInfo,
   ) {
     const { selectId } = query;
 
@@ -135,6 +143,7 @@ export class QuestionController {
       selectedAnswerNumber: null,
       selection: EStudyAnswerSelection.CHECK_ANSWER,
       correct: null,
+      launchId: launch.launchId,
     });
 
     const comment = await this.commentService.findOne({ questionId });

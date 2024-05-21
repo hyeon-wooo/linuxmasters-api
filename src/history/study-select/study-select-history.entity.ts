@@ -18,4 +18,7 @@ export class StudySelectHistoryEntity extends DefaultEntity {
       '선택한 주제들. 무작위풀기일 경우 null. 해시태그로 이어붙인 문자열',
   })
   topics: string;
+
+  @Column({ comment: '앱실행내역ID (launch.id)' })
+  launchId: string;
 }

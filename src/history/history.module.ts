@@ -8,12 +8,18 @@ import { StudyAnswerHistoryEntity } from './study-answer/study-answer-history.en
 import { StudyAnswerHistoryService } from './study-answer/study-answer-history.service';
 import { CommandHistoryService } from './command/command-history.service';
 import { CommandHistoryEntity } from './command/command-history.entity';
+import { LaunchEntity } from './launch/launch.entity';
+import { ScreenHistoryLogEntity } from './screen-history/log-screen-history.entity';
+import { LaunchService } from './launch/launcy.service';
+import { ScreenHistoryLogService } from './screen-history/log-screen-history.service';
 
 const services = [
   HistoryService,
   StudySelectHistoryService,
   StudyAnswerHistoryService,
   CommandHistoryService,
+  LaunchService,
+  ScreenHistoryLogService,
 ];
 @Global()
 @Module({
@@ -22,6 +28,8 @@ const services = [
       StudySelectHistoryEntity,
       StudyAnswerHistoryEntity,
       CommandHistoryEntity,
+      LaunchEntity,
+      ScreenHistoryLogEntity,
     ]),
   ],
   controllers: [HistoryController],
