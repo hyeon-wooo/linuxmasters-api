@@ -102,6 +102,7 @@ export class QuestionController {
     this.historyService.saveStudyAnswer({
       selectId,
       questionId,
+      userId: user.id,
       selectedAnswerNumber,
       selection: EStudyAnswerSelection.CHECK_ANSWER,
       correct,
@@ -130,6 +131,7 @@ export class QuestionController {
     this.historyService.saveStudyAnswer({
       selectId,
       questionId,
+      userId: user.id,
       selectedAnswerNumber: null,
       selection: EStudyAnswerSelection.CHECK_ANSWER,
       correct: null,

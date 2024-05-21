@@ -10,6 +10,9 @@ export class StudyAnswerHistoryEntity extends DefaultEntity {
   @Column({ comment: '완료한 문제ID (question.id)' })
   questionId: string;
 
+  @Column({ comment: '사용자ID (user.id)' })
+  userId: string;
+
   @Column('enum', {
     enum: EStudyAnswerSelection,
     comment: '문제를 완료한 경위',
