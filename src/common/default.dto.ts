@@ -1,7 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsDate, IsOptional, IsString } from 'class-validator';
 
-export abstract class DefaultDTO {
+export class DefaultDTO {
   @ApiProperty({ description: 'PK' })
   @IsString()
   id: string;
