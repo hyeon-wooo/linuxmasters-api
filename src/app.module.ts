@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { QuestionModule } from './question/question.module';
 import { HistoryModule } from './history/history.module';
 import { CommandModule } from './command/command.module';
+import { NoticeModule } from './notice/notice.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { CommandModule } from './command/command.module';
     QuestionModule,
     HistoryModule,
     CommandModule,
+    NoticeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
