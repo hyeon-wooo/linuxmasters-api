@@ -90,9 +90,4 @@ export abstract class CRUDService<TEntity> {
 
     return true;
   }
-
-  async deleteTestingData(ids: string[]): Promise<boolean> {
-    await this.repo.delete(ids);
-    return true;
-  }
 }

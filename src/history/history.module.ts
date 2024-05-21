@@ -6,11 +6,14 @@ import { StudySelectHistoryEntity } from './study-select/study-select-history.en
 import { StudySelectHistoryService } from './study-select/study-select-history.service';
 import { StudyAnswerHistoryEntity } from './study-answer/study-answer-history.entity';
 import { StudyAnswerHistoryService } from './study-answer/study-answer-history.service';
+import { CommandHistoryService } from './command/command-history.service';
+import { CommandHistoryEntity } from './command/command-history.entity';
 
 const services = [
   HistoryService,
   StudySelectHistoryService,
   StudyAnswerHistoryService,
+  CommandHistoryService,
 ];
 @Global()
 @Module({
@@ -18,6 +21,7 @@ const services = [
     TypeOrmModule.forFeature([
       StudySelectHistoryEntity,
       StudyAnswerHistoryEntity,
+      CommandHistoryEntity,
     ]),
   ],
   controllers: [HistoryController],

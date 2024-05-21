@@ -7,6 +7,7 @@ import { DBConfigService } from './config/db';
 import { UserModule } from './user/user.module';
 import { QuestionModule } from './question/question.module';
 import { HistoryModule } from './history/history.module';
+import { CommandModule } from './command/command.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { HistoryModule } from './history/history.module';
     UserModule,
     QuestionModule,
     HistoryModule,
+    CommandModule,
   ],
   controllers: [AppController],
   providers: [AppService],
